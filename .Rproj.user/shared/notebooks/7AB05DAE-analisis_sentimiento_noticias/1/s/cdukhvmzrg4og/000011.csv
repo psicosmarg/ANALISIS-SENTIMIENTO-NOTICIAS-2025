@@ -1,8 +1,0 @@
-"0","ggsave("
-"0","    ""visualizaciones/impacto_campana_sentimiento.png"", "
-"0","    plot = plot_sentimiento, "
-"0","    width = 10, "
-"0","    height = 6, "
-"0","    dpi = 300, "
-"0","    bg = ""white"""
-"0",")"
