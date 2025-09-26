@@ -1,0 +1,3 @@
+"0","# Qué se hace: Se muestra solo el gráfico, sin el código."
+"0","# Por qué se hace: Para comunicar el resultado de forma directa y visual."
+"0","print(plot_sentimiento)"

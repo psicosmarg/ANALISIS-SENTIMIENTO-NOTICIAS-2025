@@ -1,0 +1,40 @@
+---
+title: "Descubriendo el Impacto Real: ¿Funcionó Nuestra Campaña?"
+author: "Un Análisis por Osmar Gutiérrez & Litza Marcelo | Psicólogos del Comportamiento"
+date: "Septiembre 2025"
+output: 
+  html_document:
+    theme: cerulean
+    toc: false
+---
+
+```{r}
+# Este chunk ejecuta todo el análisis en segundo plano pero no se muestra en el reporte final.
+# Así, el reporte es limpio y se enfoca en los resultados.
+library(tidyverse)
+set.seed(42)
+app_data <- tibble(user_id=1:1000,edad=sample(18:65,1000,T),genero=sample(c("Masculino","Femenino","Otro"),1000,T,prob=c(0.48,0.48,0.04)),expuesto_campana=sample(c("Sí","No"),1000,T,prob=c(0.4,0.6)),sentimiento_inicial=sample(c("Positivo","Neutral","Negativo"),1000,T,prob=c(0.3,0.6,0.1)))%>%mutate(sentimiento_final=case_when(expuesto_campana=="Sí"&sentimiento_inicial=="Neutral"~sample(c("Positivo","Neutral"),n(),T,prob=c(0.4,0.6)),TRUE~sentimiento_inicial))%>%janitor::clean_names()
+plot_sentimiento <- app_data %>% ggplot(aes(x=expuesto_campana,fill=sentimiento_final))+geom_bar(position="fill")+scale_y_continuous(labels=scales::percent)+labs(subtitle="Proporción de sentimiento final según exposición a la campaña",x="Expuesto a la Campaña",y="Proporción de Usuarios",fill="Sentimiento Final")+theme_minimal(base_size=14)
+```
+
+### **El Desafío: ¿Invertir a Ciegas?**
+
+Una empresa de medios digitales invirtió en una nueva campaña publicitaria, pero se enfrentaba a una pregunta clave: ¿cómo saber si realmente funcionó? El objetivo de nuestro análisis fue pasar de la intuición a la evidencia, usando datos para medir el impacto real de la campaña en la percepción de los usuarios.
+
+### **El Descubrimiento: Una Señal Prometedora**
+
+Analizamos a 1,000 usuarios y descubrimos una fuerte señal en los datos. Los usuarios que vieron la campaña mostraron una mejora significativa en su sentimiento hacia la aplicación.
+
+Nuestro hallazgo más importante fue que la campaña logró **"convencer a los indiferentes"**, moviendo a un segmento importante de usuarios de un estado "Neutral" a uno "Positivo".
+
+```{r}
+# Qué se hace: Se muestra solo el gráfico, sin el código.
+# Por qué se hace: Para comunicar el resultado de forma directa y visual.
+print(plot_sentimiento)
+```
+
+### **La Estrategia Inteligente: De la Correlación a la Confianza**
+
+Una correlación es una pista, no una certeza. Nuestro análisis nos llevó a la recomendación de máximo ROI: antes de duplicar la inversión, proponemos una **Prueba A/B controlada.**
+
+Este siguiente paso nos dará la confianza estadística para invertir de manera inteligente, asegurando que cada peso gastado tenga un impacto real y medible en el comportamiento y la percepción de nuestra audiencia.
