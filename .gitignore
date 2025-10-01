@@ -1,0 +1,8 @@
+# Archivos de sesión de RStudio
+.Rproj.user/
+.Rhistory
+.RData
+
+# Archivos de aprendizaje y resúmenes internos (PRIVADOS)
+Aprendizaje_*.Rmd
+resumen_ejecutivo_*.Rmd
