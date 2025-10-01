@@ -1,4 +1,4 @@
-# Análisis de Sentimiento en App de Noticias (Ejercicio 1)
+# Análisis de Sentimiento en App de Noticias
 
 ## 1. Contexto del Proyecto
 
